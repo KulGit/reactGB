@@ -1,11 +1,10 @@
-import './App.css';
+import Message from './Message';
 
 function App() {
+  const textMessage = "Create first React app";
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
+    <div>
+      <Message name={textMessage}/>
     </div>
   );
 }
