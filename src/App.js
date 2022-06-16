@@ -16,6 +16,7 @@ function App() {
     console.log(messageList);
 
     //без ошибок, но не происходит обновление массива
+    //
     setMessageList(ref.current.push('inputText'));
 
     // при этом варианте добавление в массив только первый раз, а далее ошибка
