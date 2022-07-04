@@ -1,4 +1,4 @@
-import { GET_CHATS } from "../actionTypes"
+import { GET_MESSAGES } from "../actionTypes"
 
 const initialState = {
     chats: [
@@ -15,9 +15,10 @@ const initialState = {
 
 export const chatReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_CHATS:
+        case GET_MESSAGES:
             return {
-                ...state, chats: state.chats
+                ...state, 
+                chats: state.chats
             }
 
 

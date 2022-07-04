@@ -1,4 +1,4 @@
-import { GET_MESSAGES } from "../actionTypes"
+import { ADD_MESSAGE, DELETE_MESSAGE } from "../actionTypes"
 
 const initialState = {
     messages: [
@@ -17,9 +17,16 @@ const initialState = {
 
 export const messageReducer = (state = initialState, action) => {
     switch (action.type) {
-        // case GET_MESSAGES {
-        //     ...message, state.message
-        // }
+        case DELETE_MESSAGE:
+            return {
+            ...state,
+            messages: state.messages.filter((item) =>  item.id !== action.payload )
+        }
+        case ADD_MESSAGE:
+            return {
+                ...state,
+                messages: [...state.messages, state.payload]
+            }
 
 
 
