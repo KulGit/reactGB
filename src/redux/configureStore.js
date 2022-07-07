@@ -1,13 +1,10 @@
 // import createStore from 'redux';
-import { combineReducers, createStore } from 'redux';
-import { chatReducer } from './chatReducer/chatReducer';
-import { messageReducer } from './messageReducer/messageReducer';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+// import { chatReducer } from './chatReducer/chatReducer';
+// import { messageReducer } from './messageReducer/messageReducer';
 import {createLogger} from 'redux-logger'
-
-const persistConfig = {
-    key: 'root',
-    storage
-}
+import { todosReducer } from './todosReducer/todosReducer';
+import thunk from 'redux-thunk';
 
 const logger = createLogger ({
     collapsed: true,
@@ -15,11 +12,9 @@ const logger = createLogger ({
 })
 
 const mainReducer = combineReducers({
-    chats: chatReducer,
-    messages: messageReducer
+    // chats: chatReducer,
+    // messages: messageReducer
+    todos: todosReducer
 })
 
-const persistReducer = persistReducer(persistConfig, mainReducer)
-
-export const store = createStore(persistedReducer)
-export const persist = persistStore(store)
+export const store = createStore(mainReducer, applyMiddleware(thunk, logger))
